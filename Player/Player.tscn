@@ -20,7 +20,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0 )
 [node name="Camera" type="Camera" parent="Head"]
 current = true
 far = 250.0
-
-[node name="grappleRaycast" type="RayCast" parent="Head/Camera"]
-enabled = true
-cast_to = Vector3( 0, 0, -60 )

@@ -14,9 +14,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FirstPersonStarter"
+config/name="GRaPPLE"
 run/main_scene="res://Levels/Main/L_Main.tscn"
 config/icon="res://icon.png"
+
+[global]
+
+layer=false
 
 [importer_defaults]
 
@@ -1131,6 +1135,7 @@ use_hook={
 
 3d_physics/layer_1="Objects"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Hook"
 
 [rendering]
 
