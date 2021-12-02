@@ -16,6 +16,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 [node name="ArenaGeometry" type="Spatial" parent="."]
 
 [node name="Floor1" parent="ArenaGeometry" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166383, -0.0209957, -0.266168 )
 
 [node name="Wall1" parent="ArenaGeometry" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, -20 )

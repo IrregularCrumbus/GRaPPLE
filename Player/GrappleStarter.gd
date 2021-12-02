@@ -1,0 +1,87 @@
+extends KinematicBody
+
+var speed = 20
+var acceleration = 50
+var gravity = 20
+var jump = 10
+
+var grappling = false
+var grapplePoint = Vector3()
+var grapplePointGet = false
+
+var FOV = 80.0
+var cam_path = "Head/Camera"
+var mouse_sensitivity = 0.25
+
+var direction = Vector3()
+var velocity = Vector3()
+var fall = Vector3() 
+
+onready var head = $Head
+onready var grappleCast = $Head/Camera/GrappleRayCast
+onready var cam: Camera = get_node(cam_path)
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	cam.fov = FOV
+
+	
+func _input(event):
+	
+	if event is InputEventMouseMotion:
+		rotate_y(deg2rad(-event.relative.x * mouse_sensitivity)) 
+		head.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity)) 
+		head.rotation.x = clamp(head.rotation.x, deg2rad(-90), deg2rad(90))
+
+func grapple():
+	if Input.is_action_just_pressed("use_hook"):
+		if grappleCast.is_colliding():
+			if not grappling:
+				grappling = true
+	if grappling:
+		fall.y = 0
+		if not grapplePointGet:
+			grapplePoint = grappleCast.get_collision_point()
+			grapplePointGet = true
+		if grapplePoint.distance_to(transform.origin) > 1:
+			if grapplePointGet:
+				transform.origin = lerp(transform.origin, grapplePoint, 0.05)
+		else:
+			grappling = false
+			grapplePointGet = false
+
+func _physics_process(delta):
+	
+	grapple()
+	
+	direction = Vector3()
+	
+	move_and_slide(fall, Vector3.UP)
+	
+	if not is_on_floor():
+		fall.y -= gravity * delta
+		
+	if Input.is_action_just_pressed("move_jump") and is_on_floor():
+		fall.y = jump
+		
+	if Input.is_action_pressed("move_forward"):
+	
+		direction -= transform.basis.z
+	
+	elif Input.is_action_pressed("move_backward"):
+		
+		direction += transform.basis.z
+		
+	if Input.is_action_pressed("move_left"):
+		
+		direction -= transform.basis.x			
+		
+	elif Input.is_action_pressed("move_right"):
+		
+		direction += transform.basis.x
+			
+		
+	direction = direction.normalized()
+	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta) 
+	velocity = move_and_slide(velocity, Vector3.UP) 
+	
