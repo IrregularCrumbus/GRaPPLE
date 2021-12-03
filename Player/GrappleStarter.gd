@@ -56,7 +56,7 @@ func _physics_process(delta):
 	
 	direction = Vector3()
 	
-	move_and_slide(fall, Vector3.UP)
+	move_and_slide(fall, Vector3.UP, true)
 	
 	if not is_on_floor():
 		fall.y -= gravity * delta
@@ -83,5 +83,4 @@ func _physics_process(delta):
 		
 	direction = direction.normalized()
 	velocity = velocity.linear_interpolate(direction * speed, acceleration * delta) 
-	velocity = move_and_slide(velocity, Vector3.UP) 
-	
+	velocity = move_and_slide(velocity, Vector3.UP, true) 
