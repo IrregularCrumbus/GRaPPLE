@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Main/L_Main.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Levels/Main/Geometry/Wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Main/Geometry/Cube.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Main/Environment.tres" type="Environment" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.454902, 1, 0, 1 )
 
 [node name="L_Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -95,6 +100,11 @@ transform = Transform( -3.5, -0.216506, -3.01992e-07, -6.06218, 0.125, -1.51421e
 
 [node name="TooSteep2" parent="ArenaGeometry" instance=ExtResource( 5 )]
 transform = Transform( 3.5, 0.216506, 0, -6.06218, 0.125, 0, 0, 0, 2, -16.5, 5.5, 8.5 )
+
+[node name="HowToGetUpThereTho" type="MeshInstance" parent="ArenaGeometry"]
+transform = Transform( 4, 0, 0, 0, 0.05, 0, 0, 0, 4, 0, 37.6818, -22.0997 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="Lighting" type="Node" parent="."]
 
