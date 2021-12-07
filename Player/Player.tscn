@@ -34,3 +34,7 @@ margin_right = 560.0
 margin_bottom = 335.0
 texture = ExtResource( 2 )
 expand = true
+
+[node name="HahaBonk" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 1.5, 0 )

@@ -18,6 +18,7 @@ var velocity = Vector3()
 var fall = Vector3() 
 
 onready var head = $Head
+onready var bonk = $HahaBonk
 onready var grappleCast = $Head/Camera/GrappleRayCast
 onready var cam: Camera = get_node(cam_path)
 
@@ -41,14 +42,19 @@ func grapple():
 	if grappling:
 		fall.y = 0
 		if not grapplePointGet:
-			grapplePoint = grappleCast.get_collision_point()
+			grapplePoint = grappleCast.get_collision_point() + Vector3(0, 0.25, 0)
 			grapplePointGet = true
 		if grapplePoint.distance_to(transform.origin) > 1:
 			if grapplePointGet:
-				transform.origin = lerp(transform.origin, grapplePoint, 0.05)
+				transform.origin = lerp(transform.origin, grapplePoint, 0.10)
 		else:
 			grappling = false
 			grapplePointGet = false
+	if bonk.is_colliding():
+		grappling = false
+		grapplePoint = null
+		grapplePointGet = false
+		global_translate(Vector3(0, -1, 0))
 
 func _physics_process(delta):
 	

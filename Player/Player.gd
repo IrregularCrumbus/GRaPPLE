@@ -163,65 +163,6 @@ func accelerate(delta: float) -> void:
 		if abs(velocity.z) < _vel_clamp:
 			velocity.z = 0
 
-### BEGIN HOOK CODE BY CTWOBOSIUS ###
-
-func handle_hook() -> void:
-	check_hook_activation()
-	var length := calculate_path()
-	draw_hook(length)
-	look_for_point()
-
-func check_hook_activation() -> void:
-	# Activate hook
-	if Input.is_action_just_pressed("hook") and hook.is_colliding():
-		hooked = true
-		grapple_position = hook.get_collision_point()
-		line.show()
-		$Sound.pitch_scale = randf() / 2 + .75
-		$Sound.play(0.0)
-	
-	# Stop grappling
-	elif Input.is_action_just_released("hook"):
-		hooked = false
-		line.hide()
-
-# Adds to player velocity and returns the length of the hook rope
-func calculate_path() -> float:
-	var player2hook := grapple_position - translation # vector from player to hook
-	var length := player2hook.length()
-	if hooked:
-		# if we more than 4 away from line, don't dampen speed as much
-		if length > 4:
-			velocity *= .999
-		# Otherwise dampen speed more
-		else:
-			velocity *= .9
-		
-		# Hook's law equation
-		var force := grapple_speed * (length - rest_length)
-		
-		# Clamp force to be less than max_grapple_speed
-		if abs(force) > max_grapple_speed:
-			force = max_grapple_speed
-		
-		# Preserve direction, but scale by force
-		velocity += player2hook.normalized() * force
-	
-	return length
-
-# Makes the line have length LENGTH
-func draw_hook(length: float) -> void:
-	line_helper.look_at(grapple_position, Vector3.UP)
-	line.height = length
-	line.translation.z = length / -2
-
-func look_for_point() -> void:
-	var grapple_pt := get_node_or_null(grapple_point)
-	if grapple_pt and hook.is_colliding():
-		grapple_pt.translation = hook.get_collision_point()
-		
-### END HOOK CODE BY CTWOBOSIUS ###
-
 func jump() -> void:
 	if _is_jumping_input:
 		velocity.y = jump_height
