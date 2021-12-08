@@ -1,6 +1,6 @@
 extends KinematicBody
 
-var speed = 20
+var speed = 35
 var acceleration = 50
 var gravity = 20
 var jump = 10
@@ -47,7 +47,7 @@ func grapple():
 		if grapplePoint.distance_to(transform.origin) > 1:
 			if grapplePointGet:
 				transform.origin = lerp(transform.origin, grapplePoint, 0.10)
-		else:
+		if Input.is_action_just_released("use_hook"):
 			grappling = false
 			grapplePointGet = false
 	if bonk.is_colliding():
