@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/GrappleStarter.gd" type="Script" id=1]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=2]
+[ext_resource path="res://Player/weapon_ready.png" type="Texture" id=3]
+[ext_resource path="res://Player/weapon_empty.png" type="Texture" id=4]
+[ext_resource path="res://Player/weapon_fire.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -27,7 +30,11 @@ far = 250.0
 enabled = true
 cast_to = Vector3( 0, 0, -60 )
 
-[node name="TextureRect" type="TextureRect" parent="Head/Camera"]
+[node name="BulletCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -60 )
+
+[node name="Crosshair" type="TextureRect" parent="Head/Camera"]
 margin_left = 934.0
 margin_top = 510.0
 margin_right = 994.0
@@ -35,6 +42,30 @@ margin_bottom = 570.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
+
+[node name="Weapon" type="TextureRect" parent="Head/Camera"]
+margin_left = 900.0
+margin_top = 480.0
+margin_right = 1290.0
+margin_bottom = 740.0
+rect_scale = Vector2( 2.62549, 2.3071 )
+texture = ExtResource( 3 )
+
+[node name="WeaponEmpty" type="TextureRect" parent="Head/Camera"]
+margin_left = 900.0
+margin_top = 480.0
+margin_right = 1290.0
+margin_bottom = 740.0
+rect_scale = Vector2( 2.62549, 2.3071 )
+texture = ExtResource( 4 )
+
+[node name="WeaponFire" type="TextureRect" parent="Head/Camera"]
+margin_left = 900.0
+margin_top = 480.0
+margin_right = 1290.0
+margin_bottom = 740.0
+rect_scale = Vector2( 2.62549, 2.3071 )
+texture = ExtResource( 5 )
 
 [node name="HahaBonk" type="RayCast" parent="."]
 enabled = true

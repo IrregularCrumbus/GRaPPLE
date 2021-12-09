@@ -9,6 +9,8 @@ var grappling = false
 var grapplePoint = Vector3()
 var grapplePointGet = false
 
+var firing = false
+
 var FOV = 80.0
 var cam_path = "Head/Camera"
 var mouse_sensitivity = 0.25
@@ -20,7 +22,11 @@ var fall = Vector3()
 onready var head = $Head
 onready var bonk = $HahaBonk
 onready var grappleCast = $Head/Camera/GrappleRayCast
+onready var bulletCast = $Head/Camera/BulletCast
 onready var cam: Camera = get_node(cam_path)
+onready var weaponReady = $Head/Camera/Weapon
+onready var weaponFire = $Head/Camera/WeaponFire
+onready var weaponEmpty = $Head/Camera/WeaponEmpty
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -33,6 +39,22 @@ func _input(event):
 		rotate_y(deg2rad(-event.relative.x * mouse_sensitivity)) 
 		head.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity)) 
 		head.rotation.x = clamp(head.rotation.x, deg2rad(-90), deg2rad(90))
+
+func fire_weapon():
+	
+	weaponEmpty.hide()
+	
+	if Input.is_action_just_pressed("use_weapon"):
+		firing = true
+	else:
+		firing = false
+	
+	if firing:
+		weaponReady.hide()
+		weaponFire.show()
+		yield(get_tree().create_timer(1.0), "timeout")
+	else:
+		weaponFire.hide()
 
 func grapple():
 	if Input.is_action_just_pressed("use_hook"):
@@ -57,6 +79,8 @@ func grapple():
 		global_translate(Vector3(0, -1, 0))
 
 func _physics_process(delta):
+	
+	fire_weapon()
 	
 	grapple()
 	
