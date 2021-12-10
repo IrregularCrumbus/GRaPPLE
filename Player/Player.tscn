@@ -60,13 +60,17 @@ rect_scale = Vector2( 2.62549, 2.3071 )
 texture = ExtResource( 4 )
 
 [node name="WeaponFire" type="TextureRect" parent="Head/Camera"]
-margin_left = 900.0
-margin_top = 480.0
-margin_right = 1290.0
-margin_bottom = 740.0
+margin_left = 986.0
+margin_top = 528.0
+margin_right = 1376.0
+margin_bottom = 788.0
 rect_scale = Vector2( 2.62549, 2.3071 )
 texture = ExtResource( 5 )
 
 [node name="HahaBonk" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, 1.5, 0 )
+
+[node name="WeaponAnimationTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

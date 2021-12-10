@@ -27,6 +27,7 @@ onready var cam: Camera = get_node(cam_path)
 onready var weaponReady = $Head/Camera/Weapon
 onready var weaponFire = $Head/Camera/WeaponFire
 onready var weaponEmpty = $Head/Camera/WeaponEmpty
+onready var animationTimer = $WeaponAnimationTimer
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -46,15 +47,17 @@ func fire_weapon():
 	
 	if Input.is_action_just_pressed("use_weapon"):
 		firing = true
-	else:
+		animationTimer.start()
+	if animationTimer.is_stopped():
 		firing = false
 	
 	if firing:
 		weaponReady.hide()
 		weaponFire.show()
-		yield(get_tree().create_timer(1.0), "timeout")
+		
 	else:
 		weaponFire.hide()
+		weaponReady.show()
 
 func grapple():
 	if Input.is_action_just_pressed("use_hook"):
