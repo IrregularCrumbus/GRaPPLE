@@ -19,6 +19,9 @@ var direction = Vector3()
 var velocity = Vector3()
 var fall = Vector3() 
 
+var weaponFire1 = preload("res://sound/weapons/weaponFire1.wav")
+var weaponFire2 = preload("res://sound/weapons/weaponFire2.wav")
+
 onready var head = $Head
 onready var bonk = $HahaBonk
 onready var grappleCast = $Head/Camera/GrappleRayCast
@@ -30,12 +33,13 @@ onready var weaponEmpty = $Head/Camera/WeaponEmpty
 onready var animationTimer = $WeaponAnimationTimer
 
 func _ready() -> void:
+	# allows the player to look around with the mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	cam.fov = FOV
 
 	
 func _input(event):
-	
+	# works with _ready to allow the player to look around
 	if event is InputEventMouseMotion:
 		rotate_y(deg2rad(-event.relative.x * mouse_sensitivity)) 
 		head.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity)) 
@@ -43,10 +47,26 @@ func _input(event):
 
 func fire_weapon():
 	
+	# handles the player's ability to fire their weapon, which includes the animation, the sound, and the raycast that acts as the
+	# bullet's path
+	
 	weaponEmpty.hide()
 	
+	# A list that allows the program to play one of two sounds when the player fires their weapon
+	
+	# THIS CODE IS CURRENTLY BROKEN
+	var fireSoundList = [weaponFire1, weaponFire2]
+	var selectSound:int = randi() % fireSoundList.size()
+	var selectedSound = fireSoundList[selectSound]
+	# THIS CODE IS CURRENTLY BROKEN
+
 	if Input.is_action_just_pressed("use_weapon"):
 		firing = true
+		
+		# THIS CODE IS CURRENTLY BROKEN
+		selectedSound.play()
+		# THIS CODE IS CURRENTLY BROKEN
+		
 		animationTimer.start()
 	if animationTimer.is_stopped():
 		firing = false
