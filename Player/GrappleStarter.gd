@@ -49,8 +49,6 @@ func fire_weapon():
 	
 	# handles the player's ability to fire their weapon, which includes the animation, the sound, and the raycast that acts as the
 	# bullet's path
-	
-	weaponEmpty.hide()
 
 	if Input.is_action_just_pressed("use_weapon"):
 		firing = true

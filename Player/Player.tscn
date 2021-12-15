@@ -1,14 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/GrappleStarter.gd" type="Script" id=1]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=2]
 [ext_resource path="res://Player/weapon_ready.png" type="Texture" id=3]
-[ext_resource path="res://Player/weapon_empty.png" type="Texture" id=4]
-[ext_resource path="res://Player/weapon_fire.png" type="Texture" id=5]
-[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=6]
-[ext_resource path="res://addons/randomAudioStreamPlayer/icon_random_audio_stream_player.svg" type="Texture" id=7]
-[ext_resource path="res://sound/weapons/weaponFire1.wav" type="AudioStream" id=8]
-[ext_resource path="res://sound/weapons/weaponFire2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Player/weapon_fire.png" type="Texture" id=4]
+[ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player.gd" type="Script" id=5]
+[ext_resource path="res://addons/randomAudioStreamPlayer/icon_random_audio_stream_player.svg" type="Texture" id=6]
+[ext_resource path="res://sound/weapons/weaponFire1.wav" type="AudioStream" id=7]
+[ext_resource path="res://sound/weapons/weaponFire2.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -48,28 +47,20 @@ expand = true
 stretch_mode = 6
 
 [node name="Weapon" type="TextureRect" parent="Head/Camera"]
-margin_left = 900.0
-margin_top = 480.0
-margin_right = 1290.0
-margin_bottom = 740.0
-rect_scale = Vector2( 2.62549, 2.3071 )
+margin_left = 1137.0
+margin_top = 327.0
+margin_right = 1633.0
+margin_bottom = 854.0
+rect_scale = Vector2( 2.35828, 1.63517 )
 texture = ExtResource( 3 )
 
-[node name="WeaponEmpty" type="TextureRect" parent="Head/Camera"]
-margin_left = 900.0
-margin_top = 480.0
-margin_right = 1290.0
-margin_bottom = 740.0
-rect_scale = Vector2( 2.62549, 2.3071 )
-texture = ExtResource( 4 )
-
 [node name="WeaponFire" type="TextureRect" parent="Head/Camera"]
-margin_left = 986.0
-margin_top = 528.0
-margin_right = 1376.0
-margin_bottom = 788.0
-rect_scale = Vector2( 2.62549, 2.3071 )
-texture = ExtResource( 5 )
+margin_left = 1261.0
+margin_top = 245.0
+margin_right = 1688.0
+margin_bottom = 775.0
+rect_scale = Vector2( 2.31288, 1.66618 )
+texture = ExtResource( 4 )
 
 [node name="HahaBonk" type="RayCast" parent="."]
 enabled = true
@@ -80,11 +71,11 @@ wait_time = 0.1
 one_shot = true
 
 [node name="RandomAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 __meta__ = {
-"_editor_icon": ExtResource( 7 )
+"_editor_icon": ExtResource( 6 )
 }
-samples = [ ExtResource( 8 ), ExtResource( 9 ) ]
+samples = [ ExtResource( 7 ), ExtResource( 8 ) ]
 select_samples_from_folder = ""
 random_strategy = 0
 random_volume_range = 0.0
