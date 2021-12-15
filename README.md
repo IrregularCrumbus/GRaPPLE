@@ -1,28 +1,22 @@
-# First Person Starter ![Godot 3.4](https://img.shields.io/badge/godot-v3.4-%23478cbf)
-![Screenshot of FirstPersonStarter Template](https://i.imgur.com/gFDpPlj.png)
+This repository contains the source code and files that I'll use to create my game called GRaPPLE, a futuristic movement shooter!
 
-FPS template for Godot to give starter content for a new or already existing project!
 
-#### Includes:
-- 3D Character Controller
-  - Smooth Movement (Acceleration and Deceleration)
-  - Smooth Camera Rotation
-  - Handles Slopes like a charm in a clean way
-  - Optional Sprinting
-  - Air Control
-  - Easily Adjustable from the Inspector
-- Example 3D Scene
 
-#### Project Controls:
-- Move with `W` `A` `S` `D` or `↑` `←` `↓` `→`
-- Jump with `Space`. Sprint with `Shift`
-- Unlock/Lock Mouse with `Shift + F1`
-- Close Game with `Esc`
-- *If you haven't imported the whole project, you should add them manually!*
+To play the demo versions that I release:
 
-#### Credits:
-- Grid Texture/s from [KenneyNL](https://www.kenney.nl/assets/prototype-textures)
-- To create this project I watched [Jeremy Bullock's Godot First Person Controller Series](https://www.youtube.com/watch?v=Etpq-d5af6M&list=PLTZoMpB5Z4aD-rCpluXsQjkGYgUGUZNIV) and [Godot's FPS tutorial Documentation](https://docs.godotengine.org/en/3.2/tutorials/3d/fps_tutorial/) to understand how it works. There is some code from both tutorials with tweaks, that fix bugs.
-- [Using Physics Layers and Masks in Godot by GDQuest](https://www.youtube.com/watch?v=UZu8NwlkXcU)
-- [Open World Environment Lighting in Godot by Tokisan Games](https://www.youtube.com/watch?v=8kwnCxK8Vc8)
-- Thanks to the awesome Godot community for being helpful to anyone with problems, for making amazing tutorials, for writing the documentation and being supportive.
+1) Install Godot 3.1.1; newer versions of Godot are difficult to use. You can download godot 3.1.1 below.
+https://downloads.tuxfamily.org/godotengine/3.1.1/
+
+WINDOWS USERS will install Godot_v3.1.1-stable_win32.exe.zip or Godot_v3.1.1-stable_win64.exe.zip, depending on their processor.
+MAC OS USERS will install Godot_v3.1.1-stable_osx.64.zip
+LINUX USERS can probably figure it out themselves. I dunno which one of these works for Linux.
+
+2) Download this source code and place it anywhere in your computer. If you have other Godot projects, be sure to put this project folder there.
+
+3) Use the "Import" button and open up the "project.gd" file that comes with this repository.
+
+4) Open the project. Press the play button at the top of the screen to run the game.
+
+5) ???
+
+6) profit
