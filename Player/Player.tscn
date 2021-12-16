@@ -36,6 +36,7 @@ cast_to = Vector3( 0, 0, -60 )
 [node name="BulletCast" type="RayCast" parent="Head/Camera"]
 enabled = true
 cast_to = Vector3( 0, 0, -60 )
+collision_mask = 17
 
 [node name="Crosshair" type="TextureRect" parent="Head/Camera"]
 margin_left = 934.0

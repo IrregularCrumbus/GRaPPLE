@@ -10,6 +10,7 @@ var grapplePoint = Vector3()
 var grapplePointGet = false
 
 var firing = false
+var weaponDamage = 50
 
 var FOV = 80.0
 var cam_path = "Head/Camera"
@@ -56,6 +57,12 @@ func fire_weapon():
 		weaponSounds.play()
 		
 		animationTimer.start()
+		if bulletCast.is_colliding():
+			# Will eventually use bulletPoint to leave a bullet hole where bulletCast collides
+			var bulletCollisionPoint = bulletCast.get_collider()
+			if bulletCollisionPoint.is_in_group("Enemy"):
+				print("HIT")
+				bulletCollisionPoint.targetHealth -= weaponDamage
 	if animationTimer.is_stopped():
 		firing = false
 	

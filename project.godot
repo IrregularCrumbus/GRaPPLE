@@ -1145,6 +1145,8 @@ use_weapon={
 3d_physics/layer_1="Objects"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Hook"
+3d_physics/layer_4="Weapon raycasts"
+3d_physics/layer_5="Enemy"
 
 [rendering]
 
