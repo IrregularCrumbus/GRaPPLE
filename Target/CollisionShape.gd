@@ -1,4 +1,4 @@
-extends CollisionShape
+extends KinematicBody
 
 var targetHealth = 200
 

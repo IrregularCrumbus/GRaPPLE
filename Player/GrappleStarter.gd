@@ -9,6 +9,7 @@ var grappling = false
 var grapplePoint = Vector3()
 var grapplePointGet = false
 
+var hitConnected = false
 var firing = false
 var weaponDamage = 50
 
@@ -30,6 +31,7 @@ onready var cam: Camera = get_node(cam_path)
 onready var weaponReady = $Head/Camera/Weapon
 onready var weaponFire = $Head/Camera/WeaponFire
 onready var weaponEmpty = $Head/Camera/WeaponEmpty
+onready var hitmarker = $Head/Camera/hitmarker
 onready var animationTimer = $WeaponAnimationTimer
 onready var weaponSounds = $RandomAudioStreamPlayer
 
@@ -61,18 +63,22 @@ func fire_weapon():
 			# Will eventually use bulletPoint to leave a bullet hole where bulletCast collides
 			var bulletCollisionPoint = bulletCast.get_collider()
 			if bulletCollisionPoint.is_in_group("Enemy"):
-				print("HIT")
+				hitConnected = true
 				bulletCollisionPoint.targetHealth -= weaponDamage
 	if animationTimer.is_stopped():
 		firing = false
+		hitConnected = false
 	
 	if firing:
 		weaponReady.hide()
 		weaponFire.show()
+		if hitConnected:
+			hitmarker.show()
 		
 	else:
 		weaponFire.hide()
 		weaponReady.show()
+		hitmarker.hide()
 
 func grapple():
 	if Input.is_action_just_pressed("use_hook"):

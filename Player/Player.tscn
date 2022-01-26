@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/GrappleStarter.gd" type="Script" id=1]
 [ext_resource path="res://Player/crosshair.png" type="Texture" id=2]
@@ -11,6 +11,10 @@
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/marker.png-dc3a735190b746f2888bee4a56a04e54.stex"
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
@@ -62,6 +66,14 @@ margin_right = 1688.0
 margin_bottom = 775.0
 rect_scale = Vector2( 2.31288, 1.66618 )
 texture = ExtResource( 4 )
+
+[node name="hitmarker" type="TextureRect" parent="Head/Camera"]
+margin_left = 934.0
+margin_top = 510.0
+margin_right = 994.0
+margin_bottom = 570.0
+texture = SubResource( 2 )
+stretch_mode = 1
 
 [node name="HahaBonk" type="RayCast" parent="."]
 enabled = true
