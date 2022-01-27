@@ -34,6 +34,7 @@ current = true
 far = 250.0
 
 [node name="GrappleRayCast" type="RayCast" parent="Head/Camera"]
+visible = false
 enabled = true
 cast_to = Vector3( 0, 0, -60 )
 
