@@ -28,9 +28,6 @@ onready var bonk = $HahaBonk
 onready var grappleCast = $Head/Camera/GrappleRayCast
 onready var bulletCast = $Head/Camera/BulletCast
 onready var cam: Camera = get_node(cam_path)
-onready var weaponReady = $Head/Camera/Weapon
-onready var weaponFire = $Head/Camera/WeaponFire
-onready var weaponEmpty = $Head/Camera/WeaponEmpty
 onready var hitmarker = $Head/Camera/hitmarker
 onready var animationTimer = $WeaponAnimationTimer
 onready var weaponSounds = $RandomAudioStreamPlayer
@@ -70,14 +67,10 @@ func fire_weapon():
 		hitConnected = false
 	
 	if firing:
-		weaponReady.hide()
-		weaponFire.show()
 		if hitConnected:
 			hitmarker.show()
 		
 	else:
-		weaponFire.hide()
-		weaponReady.show()
 		hitmarker.hide()
 
 func grapple():
