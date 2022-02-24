@@ -29,8 +29,10 @@ onready var grappleCast = $Head/Camera/GrappleRayCast
 onready var bulletCast = $Head/Camera/BulletCast
 onready var cam: Camera = get_node(cam_path)
 onready var hitmarker = $Head/Camera/hitmarker
-onready var animationTimer = $WeaponAnimationTimer
+onready var animationTimer = $animationTimer
 onready var weaponSounds = $RandomAudioStreamPlayer
+onready var weaponReady = $Head/Camera/weaponReady
+onready var weaponFire = $Head/Camera/weaponFire
 
 func _ready() -> void:
 	# allows the player to look around with the mouse
@@ -56,6 +58,7 @@ func fire_weapon():
 		weaponSounds.play()
 		
 		animationTimer.start()
+		
 		if bulletCast.is_colliding():
 			# Will eventually use bulletPoint to leave a bullet hole where bulletCast collides
 			var bulletCollisionPoint = bulletCast.get_collider()
@@ -63,15 +66,18 @@ func fire_weapon():
 				hitConnected = true
 				bulletCollisionPoint.targetHealth -= weaponDamage
 	if animationTimer.is_stopped():
+		weaponReady.show()
+		weaponFire.hide()
+		hitmarker.hide()
 		firing = false
 		hitConnected = false
 	
 	if firing:
+		weaponReady.hide()
+		weaponFire.show()
 		if hitConnected:
 			hitmarker.show()
 		
-	else:
-		hitmarker.hide()
 
 func grapple():
 	if Input.is_action_just_pressed("use_hook"):

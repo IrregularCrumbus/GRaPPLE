@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Main/L_Main.gd" type="Script" id=1]
 [ext_resource path="res://Target/target.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Levels/Main/Geometry/Wall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Main/Geometry/Cube.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Main/Environment.tres" type="Environment" id=7]
-[ext_resource path="res://enemy.glb" type="PackedScene" id=8]
 
 [node name="L_Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -114,6 +113,3 @@ transform = Transform( -0.866026, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75,
 shadow_enabled = true
 shadow_bias = 0.05
 directional_shadow_max_distance = 250.0
-
-[node name="Scene Root" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.599529, 0, 0.800353, 0, 1, 0, -0.800353, 0, 0.599529, -5.3851, 0.591049, -1.33505 )
