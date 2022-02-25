@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="CylinderMesh" id=2]
+
+[sub_resource type="CylinderMesh" id=3]
+
+[sub_resource type="CylinderMesh" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="PrismMesh" id=6]
+
+[sub_resource type="CylinderMesh" id=7]
+
+[sub_resource type="CylinderShape" id=8]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody"]
+transform = Transform( 2.71131, 0, 0, 0, 0.116501, 0, 0, 0, 2.71131, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody/MeshInstance"]
+transform = Transform( 0.780597, 0, 0, 0, 3.18302, 0, 0, 0, 0.780597, 0, 2.9135, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="KinematicBody"]
+transform = Transform( 0.920606, 0, 0, 0, 0.468711, 0, 0, 0, 0.920606, 0, 1.1826, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="KinematicBody/MeshInstance2"]
+transform = Transform( 2.36152, 0, 0, 0, 0.302596, 0, 0, 0, 2.36152, 0, 1.16387, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="KinematicBody/MeshInstance2"]
+transform = Transform( 1.25936, 0, 0, 0, 2.71258, 0, 0, 0, 1.25936, 0, 4.01302, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="KinematicBody/MeshInstance2"]
+transform = Transform( 1.25471, 0, 0, 0, 6.93779, 0, 0, 0, 1.25471, 0, 13.5336, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="KinematicBody"]
+transform = Transform( -2.03592e-08, -0.808141, 0, 0.465765, -3.5325e-08, 0, 0, 0, 0.163207, -0.978, 7.658, -0.4 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="KinematicBody"]
+transform = Transform( -0.00162275, -0.808141, 0, 0.465762, -0.000935254, 0, 0, 0, 0.163207, -0.978, 7.658, 0.4 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody" groups=[
+"Target",
+]]
+transform = Transform( 2.18813, 0, 0, 0, 5.30728, 0, 0, 0, 2.18813, 0, 5.47901, 0 )
+shape = SubResource( 8 )

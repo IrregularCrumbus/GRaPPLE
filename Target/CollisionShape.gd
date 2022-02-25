@@ -1,6 +1,4 @@
-extends KinematicBody
-
-var targetHealth = 200
+var targetHealth = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
